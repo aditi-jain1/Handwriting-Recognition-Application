@@ -18,7 +18,7 @@ img_count = 1
 
 IMAGESAVE = True
 MODEL = load_model("bestmodel.h5")
-
+COLORS = [(255,0,0), (255,128,0), (247, 173, 0),(102, 204, 0), (0, 153, 76), (0, 204, 204), (51, 153, 255),  (178, 102, 255), (255, 102, 255), (255, 51, 153)]
 LABELS = {0: "zero",
           1: "one",
           2: "two",
@@ -107,9 +107,9 @@ while play:
                 predicted_digit = np.argmax(prediction[0])
 
                 #Creating Visual
-                pygame.draw.rect(screen, RED, rect,  2)
+                pygame.draw.rect(screen, COLORS[predicted_digit], rect,  2)
                 font = pygame.font.Font('freesansbold.ttf', 16)
-                text = font.render(str(LABELS[predicted_digit]), True, WHITE, RED)
+                text = font.render(str(LABELS[predicted_digit]), True, WHITE, COLORS[predicted_digit])
                 textRect = text.get_rect()
                 textRect.center = (rect_x1, rect_y1+8)
                 screen.blit(text, textRect)
